@@ -26,13 +26,54 @@ public class JpaMain {
 //            Member findMember = em.find(Member.class, 2L); // PK를 통해 member 조회
 //            findMember.setName("HelloJPA");
 
-            List<Member> result = em.createQuery("select m from Member m", Member.class)
-                    .getResultList();
+//            List<Member> result = em.createQuery("select m from Member m", Member.class)
+//                    .getResultList();
+//
+//            for (Member member : result) {
+//                System.out.println("member.getName() = " + member.getName());
+//            }
 
-            for (Member member : result) {
-                System.out.println("member.getName() = " + member.getName());
-            }
-            
+            // 비영속
+//            Member member = new Member();
+//            member.setId(101L);
+//            member.setName("HelloJPA");
+//
+//            // 영속
+//            em.persist(member);
+//
+//            final Member findMember = em.find(Member.class, 101L);
+//            System.out.println("findmember.getId() = " + findMember.getId());
+//            System.out.println("findmember.getName() = " + findMember.getName());
+
+//            final Member findMember1 = em.find(Member.class, 101L);
+//            final Member findMember2 = em.find(Member.class, 101L);
+//            System.out.println("result = " + (findMember1 == findMember2));
+
+//            final Member member1 = new Member(150L, "A");
+//            final Member member2 = new Member(160L, "B");
+//            System.out.println("=================");
+//
+//            em.persist(member1);
+//            em.persist(member2);
+
+            Member member = em.find(Member.class, 150L);
+            member.setName("AAAA");
+
+            // 영속 -> 준영속 상태로 변경
+//            em.detach(member);
+
+            // 엔티티 매니저의 영속성 모두 지우기
+            em.clear();
+            Member member2 = em.find(Member.class, 150L);
+
+
+
+            System.out.println("=================");
+
+//            final Member member = new Member(200L, "member200");
+//            em.persist(member);
+//            em.flush();
+
             // 트랜잭션 커밋
             tx.commit();
         } catch (Exception e) {
