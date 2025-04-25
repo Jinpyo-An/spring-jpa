@@ -1,10 +1,11 @@
 package hellojpa;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
 @Entity
+@Getter @Setter
 public class Member {
 
     @Id
@@ -23,5 +24,10 @@ public class Member {
     private Team team;
 
     public Member() {
+    }
+
+    public void changeTeam(Team team) {
+        this.team = team;
+        team.getMembers().add(this);
     }
 }
