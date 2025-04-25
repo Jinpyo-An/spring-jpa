@@ -56,23 +56,56 @@ public class JpaMain {
 //            em.persist(member1);
 //            em.persist(member2);
 
-            Member member = em.find(Member.class, 150L);
-            member.setName("AAAA");
+//            Member member = em.find(Member.class, 150L);
+//            member.setName("AAAA");
 
             // 영속 -> 준영속 상태로 변경
 //            em.detach(member);
 
             // 엔티티 매니저의 영속성 모두 지우기
-            em.clear();
-            Member member2 = em.find(Member.class, 150L);
-
-
-
-            System.out.println("=================");
+//            em.clear();
+//            Member member2 = em.find(Member.class, 150L);
+//
+//
+//
+//            System.out.println("=================");
 
 //            final Member member = new Member(200L, "member200");
 //            em.persist(member);
 //            em.flush();
+
+//            final Member member = new Member();
+//            member.setName("C");
+//
+//            em.persist(member);
+
+//            final Team team = new Team();
+//            team.setName("TeamA");
+//            em.persist(team);
+//
+//            final Member member = new Member();
+//            member.setUsername("member1");
+//            member.setTeamId(team.getId());
+//            em.persist(member);
+//
+//            final Member findMember = em.find(Member.class, member.getId());
+//
+//            final Long findTeamId = findMember.getTeamId();
+//            final Team findTeam = em.find(Team.class, findTeamId);
+
+            final Team team = new Team();
+            team.setName("TeamA");
+            em.persist(team);
+
+            final Member member = new Member();
+            member.setUsername("member1");
+            member.setTeam(team);
+            em.persist(member);
+
+            final Member findMember = em.find(Member.class, member.getId());
+
+            final Team findTeam = findMember.getTeam();
+            System.out.println("findTeam.getId() = " + findTeam.getId());
 
             // 트랜잭션 커밋
             tx.commit();
