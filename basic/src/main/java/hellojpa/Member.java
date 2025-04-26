@@ -16,18 +16,26 @@ public class Member {
     @Column(name = "username")
     private String username;
 
+    @ManyToOne
+    @JoinColumn(name = "team_id",insertable = false, updatable = false)
+    private Team team;
+
+    @OneToOne
+    @JoinColumn(name = "locker_id")
+    private Locker locker;
+
 //    @Column(name = "team_id")
 //    private Long teamId;
 
-    @ManyToOne
-    @JoinColumn(name = "team_id")
-    private Team team;
+//    @ManyToOne
+//    @JoinColumn(name = "team_id")
+//    private Team team;
 
     public Member() {
     }
 
-    public void changeTeam(Team team) {
-        this.team = team;
-        team.getMembers().add(this);
-    }
+//    public void changeTeam(Team team) {
+//        this.team = team;
+//        team.getMembers().add(this);
+//    }
 }

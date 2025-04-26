@@ -10,6 +10,9 @@
         <class>hello.jpashop.domain.Member</class>
         <class>hello.jpashop.domain.Order</class>
         <class>hello.jpashop.domain.OrderItem</class>
+        <class>hello.jpashop.domain.Category</class>
+        <class>hello.jpashop.domain.Delivery</class>
+        <class>hello.jpashop.domain.DeliveryStatus</class>
 
         <properties>
             <!-- 필수 속성 -->

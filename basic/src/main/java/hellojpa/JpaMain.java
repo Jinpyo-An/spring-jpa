@@ -107,24 +107,24 @@ public class JpaMain {
 //            final Team findTeam = findMember.getTeam();
 //            System.out.println("findTeam.getId() = " + findTeam.getId());
 
-            final Team team = new Team();
-            team.setName("TeamA");
-            em.persist(team);
-
-            final Member member = new Member();
-            member.setUsername("member1");
-            member.changeTeam(team);
-            em.persist(member);
+//            final Team team = new Team();
+//            team.setName("TeamA");
+//            em.persist(team);
+//
+//            final Member member = new Member();
+//            member.setUsername("member1");
+//            member.changeTeam(team);
+//            em.persist(member);
 
 //            em.flush();
 //            em.clear();
 
-            final Team findTeam = em.find(Team.class, team.getId());
-            final List<Member> members = findTeam.getMembers();
-
-            for (Member m : members) {
-                System.out.println("m = " + m.getUsername());
-            }
+//            final Team findTeam = em.find(Team.class, team.getId());
+//            final List<Member> members = findTeam.getMembers();
+//
+//            for (Member m : members) {
+//                System.out.println("m = " + m.getUsername());
+//            }
 
 //            final Member findMember = em.find(Member.class, member.getId());
 //            final List<Member> members = findMember.getTeam().getMembers();
@@ -133,6 +133,16 @@ public class JpaMain {
 //                System.out.println("m = " + m.getUsername());
 //            }
 
+            final Member member = new Member();
+            member.setUsername("member1");
+
+            em.persist(member);
+
+            final Team team = new Team();
+            team.setName("teamA");
+            team.getMembers().add(member);
+
+            em.persist(team);
 
 
             // 트랜잭션 커밋
