@@ -4,8 +4,8 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
+import org.hibernate.Hibernate;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class JpaMain {
@@ -145,22 +145,53 @@ public class JpaMain {
 //
 //            em.persist(team);
 
-            final Member member = new Member();
-            member.setUsername("user1");
-            member.setCreatedBy("kim");
-            member.setCreatedDate(LocalDateTime.now());
 
-            em.persist(member);
+//            final Member findMember = em.find(Member.class, member.getId());
+//            System.out.println("findMember.getId() = " + findMember.getId());
+//            System.out.println("findMember.getUsername() = " + findMember.getUsername());
+
+//            final Member findMember = em.find(Member.class, member.getId());
+//
+//            System.out.println(findMember.getTeam().getClass());
+//
+//            // team proxy object initialize
+//            findMember.getTeam().getName();
+//            final Team team = new Team();
+//            team.setName("teamA");
+//            em.persist(team);
+//
+//            final Member member = new Member();
+//            member.setUsername("jinpyo");
+//            member.setTeam(team);
+//            em.persist(member);
+//
+//            em.flush();
+//            em.clear();
+//
+//            final List<Member> members = em.createQuery("select m from Member m", Member.class)
+//                    .getResultList();
+
+            final Child child1 = new Child();
+            final Child child2 = new Child();
+
+            final Parent parent = new Parent();
+            parent.addChild(child1);
+            parent.addChild(child2);
+
+            em.persist(parent);
 
             em.flush();
             em.clear();
 
+            final Parent findParent = em.find(Parent.class, parent.getId());
+            em.remove(findParent );
 
             // 트랜잭션 커밋
             tx.commit();
         } catch (Exception e) {
             // 예외 발생 시, 트랜잭션 롤백
             tx.rollback();
+            e.printStackTrace();
         } finally {
             em.close(); // 자원 정리
         }

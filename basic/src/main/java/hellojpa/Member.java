@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Getter @Setter
 public class Member extends BaseEntity {
@@ -18,13 +16,13 @@ public class Member extends BaseEntity {
     @Column(name = "username")
     private String username;
 
-    @ManyToOne
-    @JoinColumn(name = "team_id",insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "team_id")
     private Team team;
 
-    @OneToOne
-    @JoinColumn(name = "locker_id")
-    private Locker locker;
+//    @OneToOne
+//    @JoinColumn(name = "locker_id")
+//    private Locker locker;
 
 
     public Member() {
