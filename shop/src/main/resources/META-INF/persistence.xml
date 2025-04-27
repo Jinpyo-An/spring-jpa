@@ -13,6 +13,9 @@
         <class>hello.jpashop.domain.Category</class>
         <class>hello.jpashop.domain.Delivery</class>
         <class>hello.jpashop.domain.DeliveryStatus</class>
+        <class>hello.jpashop.domain.Album</class>
+        <class>hello.jpashop.domain.Book</class>
+        <class>hello.jpashop.domain.Movie</class>
 
         <properties>
             <!-- 필수 속성 -->

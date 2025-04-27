@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Table(name = "orders")
 @Getter
 @Setter
-public class Order {
+public class Order extends BaseEntity{
 
     @Id @GeneratedValue
     @Column(name = "order_id")

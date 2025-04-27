@@ -5,6 +5,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class JpaMain {
@@ -133,16 +134,26 @@ public class JpaMain {
 //                System.out.println("m = " + m.getUsername());
 //            }
 
+//            final Member member = new Member();
+//            member.setUsername("member1");
+//
+//            em.persist(membRer);
+//
+//            final Team team = new Team();
+//            team.setName("teamA");
+//            team.getMembers().add(member);
+//
+//            em.persist(team);
+
             final Member member = new Member();
-            member.setUsername("member1");
+            member.setUsername("user1");
+            member.setCreatedBy("kim");
+            member.setCreatedDate(LocalDateTime.now());
 
             em.persist(member);
 
-            final Team team = new Team();
-            team.setName("teamA");
-            team.getMembers().add(member);
-
-            em.persist(team);
+            em.flush();
+            em.clear();
 
 
             // 트랜잭션 커밋
@@ -154,6 +165,6 @@ public class JpaMain {
             em.close(); // 자원 정리
         }
 
-        emf.close(); // 자원 정
+        emf.close(); // 자원 정리
     }
 }

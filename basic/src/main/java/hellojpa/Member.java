@@ -4,9 +4,11 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter @Setter
-public class Member {
+public class Member extends BaseEntity {
 
     @Id
     @GeneratedValue
@@ -24,15 +26,17 @@ public class Member {
     @JoinColumn(name = "locker_id")
     private Locker locker;
 
+
+    public Member() {
+    }
+
 //    @Column(name = "team_id")
 //    private Long teamId;
 
 //    @ManyToOne
 //    @JoinColumn(name = "team_id")
-//    private Team team;
 
-    public Member() {
-    }
+//    private Team team;
 
 //    public void changeTeam(Team team) {
 //        this.team = team;

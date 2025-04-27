@@ -1,7 +1,6 @@
 package hello.jpashop.domain;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +10,9 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class Item {
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn
+public abstract class Item extends BaseEntity {
 
     @Id @GeneratedValue
     @Column(name = "item_id")
